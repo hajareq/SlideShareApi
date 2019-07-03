@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="0.0">com.templates.springproject.entities.User</node>
+    <node x="0.0" y="303.0">com.templates.springproject.entities.Categorie</node>
+    <node x="285.0" y="0.0">com.templates.springproject.entities.Template</node>
+    <node x="23.75" y="231.0">com.templates.springproject.entities.Client</node>
+    <node x="131.75" y="231.0">com.templates.springproject.entities.Admin</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.templates.springproject.entities.Admin" target="com.templates.springproject.entities.User">
+      <point x="0.0" y="-13.5" />
+      <point x="172.25" y="206.0" />
+      <point x="180.0" y="206.0" />
+      <point x="60.0" y="90.5" />
+    </edge>
+    <edge source="com.templates.springproject.entities.Client" target="com.templates.springproject.entities.User">
+      <point x="0.0" y="-13.5" />
+      <point x="67.75" y="206.0" />
+      <point x="60.0" y="206.0" />
+      <point x="-60.0" y="90.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="-228.0" y="164.0" />
+  <SelectedNodes>
+    <node>com.templates.springproject.entities.User</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
