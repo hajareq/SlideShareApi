@@ -18,10 +18,10 @@ public class Template implements Serializable {
 
     private int nbrDownloads;
 
-    @ManyToMany(mappedBy = "listTemplates")
+    @ManyToMany
     private Collection<User> listUsers;
 
-    @ManyToMany(mappedBy = "listTemplates")
+    @ManyToMany
     private Collection<Categorie> listCategories;
 
     public Template() {

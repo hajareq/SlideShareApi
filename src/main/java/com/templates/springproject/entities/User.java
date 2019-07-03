@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames = { "login", "email" }))
+@Table(uniqueConstraints=@UniqueConstraint(columnNames = { "login" }))
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_USER",discriminatorType=DiscriminatorType.STRING,length=2)
 public abstract class User implements Serializable {
@@ -28,6 +28,7 @@ public abstract class User implements Serializable {
     @Email
     private String email;
 
+    @ManyToMany(mappedBy = "listUsers")
     private Collection<Template> listTemplates;
 
     public User() {
