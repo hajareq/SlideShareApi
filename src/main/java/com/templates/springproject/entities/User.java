@@ -6,9 +6,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames = { "login" }))
+@Table(uniqueConstraints=@UniqueConstraint(columnNames = { "username" }))
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_USER",discriminatorType=DiscriminatorType.STRING,length=2)
 public abstract class User implements Serializable {
@@ -20,7 +21,7 @@ public abstract class User implements Serializable {
     private String prenom;
     @NotNull
     @Size(min = 4, max = 15)
-    private String login;
+    private String username;
     @NotNull
     @Size(min=6,message="la taille doit être supérieure à 6")
     private String password;
@@ -31,6 +32,14 @@ public abstract class User implements Serializable {
     @ManyToMany(mappedBy = "listUsers")
     private Collection<Template> listTemplates;
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "user_list_roles",
+            joinColumns = { @JoinColumn(name = "id_user") },
+            inverseJoinColumns = { @JoinColumn(name = "id") }
+    )
+    private Collection<Role> listRoles;
+
     public User() {
     }
 
@@ -38,7 +47,7 @@ public abstract class User implements Serializable {
         this.idUser = idUser;
         this.nom = nom;
         this.prenom = prenom;
-        this.login = login;
+        this.username = login;
         this.password = password;
         this.email = email;
     }
@@ -47,10 +56,18 @@ public abstract class User implements Serializable {
         this.idUser = idUser;
         this.nom = nom;
         this.prenom = prenom;
-        this.login = login;
+        this.username = login;
         this.password = password;
         this.email = email;
         this.listTemplates = listTemplates;
+    }
+
+    public Collection<Role> getListRoles() {
+        return listRoles;
+    }
+
+    public void setListRoles(Collection<Role> listRoles) {
+        this.listRoles = listRoles;
     }
 
     public Long getIdUser() {
@@ -77,12 +94,12 @@ public abstract class User implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
