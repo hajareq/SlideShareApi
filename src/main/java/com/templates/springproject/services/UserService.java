@@ -1,6 +1,5 @@
 package com.templates.springproject.services;
 
-import com.templates.springproject.entities.Role;
 import com.templates.springproject.entities.User;
 import com.templates.springproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +31,8 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findUserByLogin(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getListRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
+        grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
+
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 

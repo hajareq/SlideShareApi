@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames = { "username" }))
@@ -32,13 +31,8 @@ public abstract class User implements Serializable {
     @ManyToMany(mappedBy = "listUsers")
     private Collection<Template> listTemplates;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "user_list_roles",
-            joinColumns = { @JoinColumn(name = "id_user") },
-            inverseJoinColumns = { @JoinColumn(name = "id") }
-    )
-    private Collection<Role> listRoles;
+    @ManyToOne
+    private Role role;
 
     public User() {
     }
@@ -62,12 +56,12 @@ public abstract class User implements Serializable {
         this.listTemplates = listTemplates;
     }
 
-    public Collection<Role> getListRoles() {
-        return listRoles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setListRoles(Collection<Role> listRoles) {
-        this.listRoles = listRoles;
+    public void setRole(Role listRoles) {
+        this.role = listRoles;
     }
 
     public Long getIdUser() {

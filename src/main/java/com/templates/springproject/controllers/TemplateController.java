@@ -31,7 +31,7 @@ public class TemplateController {
         /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User appUser = userRepository.findUserByLogin(auth.getName()).get();
         boolean authorised = false;
-        for(Role r: appUser.getListRoles()){
+        for(Role r: appUser.getRole()){
             if(r.getName().equals("client"))
                 authorised = true;
         }
