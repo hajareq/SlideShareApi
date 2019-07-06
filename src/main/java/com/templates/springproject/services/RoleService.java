@@ -34,6 +34,6 @@ public class RoleService implements RoleMetier {
 
     @Override
     public Optional<Role> findRoleByName(String role) {
-        return roleRepository.findByNom(role);
+        return roleRepository.findByName(role);
     }
 }
