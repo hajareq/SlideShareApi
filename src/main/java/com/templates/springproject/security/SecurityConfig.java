@@ -75,13 +75,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/noauth").permitAll()
                 .antMatchers("/logout").permitAll()
-                .antMatchers("/client").authenticated()
-                .antMatchers("/client").hasRole("client")
-                .antMatchers("/admin").authenticated()
-                .antMatchers("/admin").hasRole("admin")
-                .anyRequest().permitAll();
-
+                .antMatchers("/client/**").authenticated()
+//                .antMatchers("/client/**").hasRole("client")
+                .antMatchers("/admin/**").hasRole("admin");
     }
 
 
