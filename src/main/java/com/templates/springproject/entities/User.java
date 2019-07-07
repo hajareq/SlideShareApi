@@ -31,7 +31,7 @@ public abstract class User implements Serializable {
     @ManyToMany(mappedBy = "listUsers")
     private Collection<Template> listTemplates;
 
-    @ManyToOne
+    @ManyToOne()
     private Role role;
 
     public User() {
