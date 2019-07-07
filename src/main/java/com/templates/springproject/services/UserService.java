@@ -29,6 +29,7 @@ public class UserService implements UserDetailsService, UserMetier {
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+        bCryptPasswordEncoder = new BCryptPasswordEncoder();
     }
 
 
