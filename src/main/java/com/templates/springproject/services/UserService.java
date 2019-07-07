@@ -21,16 +21,16 @@ import java.util.Set;
 @Service
 public class UserService implements UserDetailsService, UserMetier {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
+
+
+    private PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
-        bCryptPasswordEncoder = new BCryptPasswordEncoder();
     }
+
 
 
     @Override
@@ -47,18 +47,20 @@ public class UserService implements UserDetailsService, UserMetier {
 
     @Override
     public void addUser(User user) {
+        if(userRepository == null) System.out.println("userRepository is null");
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     @Override
-    public void updateUser(User user) {
+    public boolean updateUser(User user) {
         User usrToUpdate = userRepository.getOne(user.getIdUser());
         usrToUpdate.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         usrToUpdate.setNom(user.getNom());
         usrToUpdate.setPrenom(user.getPrenom());
         usrToUpdate.setUsername(user.getUsername());
-        userRepository.save(usrToUpdate);
+
+        return userRepository.save(usrToUpdate)!=null;
     }
 
     @Override

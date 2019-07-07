@@ -5,10 +5,10 @@ import com.templates.springproject.entities.User;
 import java.util.Optional;
 
 public interface UserMetier {
-    public void addUser(User user);
-    public void updateUser(User user);
-    public void deleteUser(User user);
-    public User consulterUser(Long idUser);
+     void addUser(User user);
+     boolean updateUser(User user);
+     void deleteUser(User user);
+     User consulterUser(Long idUser);
 
-    public Optional<User> findUserByUsername(String username);
+     Optional<User> findUserByUsername(String username);
 }
