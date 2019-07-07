@@ -54,12 +54,15 @@ public class UserController {
     @PostMapping("/client/update")
     public String updateUser(@RequestBody Client c) throws JSONException{
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User appUser = userRepository.findUserByUsername(auth.getName()).get();
-        if(userService.updateUser(appUser)){
-            JSONObject response = new JSONObject();
-            response.put("statut","200");
-            response.put("message", "user added successfully");
-            return response.toString();
+        if(!userService.findUserByUsername(c.getUsername()).isPresent() || c.getUsername().equals(auth.getName())) {
+            User appUser = userRepository.findUserByUsername(auth.getName()).get();
+            c.setIdUser(appUser.getIdUser());
+            if (userService.updateUser(c)) {
+                JSONObject response = new JSONObject();
+                response.put("statut", "200");
+                response.put("message", "user updated successfully");
+                return response.toString();
+            }
         }
         return sendError("cannot execute the update. Please check your new username or email. it can be used by another user");
 
