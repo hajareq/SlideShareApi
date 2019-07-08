@@ -2,6 +2,7 @@ package com.templates.springproject.Interfaces;
 
 import com.templates.springproject.entities.Categorie;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CategorieMetier {
@@ -12,4 +13,6 @@ public interface CategorieMetier {
     Categorie consulterCategorie(Integer id);
 
     Optional<Categorie> findCategorieByName(String name);
+    Optional<Categorie> findCategorieById(Integer id);
+    List<Categorie> findCategories();
 }
