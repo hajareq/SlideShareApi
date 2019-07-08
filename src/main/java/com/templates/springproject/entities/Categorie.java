@@ -13,7 +13,7 @@ public class Categorie implements Serializable {
     private Integer idCategorie;
 
     @NotNull
-    private String intitule;
+    private String name;
 
     @ManyToMany(mappedBy = "listCategories")
     private Collection<Template> listTemplates;
@@ -21,9 +21,9 @@ public class Categorie implements Serializable {
     public Categorie() {
     }
 
-    public Categorie(Integer idCategorie, String intitule, Collection<Template> listTemplates) {
+    public Categorie(Integer idCategorie, String name, Collection<Template> listTemplates) {
         this.idCategorie = idCategorie;
-        this.intitule = intitule;
+        this.name = name;
         this.listTemplates = listTemplates;
     }
 
@@ -35,12 +35,12 @@ public class Categorie implements Serializable {
         this.idCategorie = idCategorie;
     }
 
-    public String getIntitule() {
-        return intitule;
+    public String getName() {
+        return name;
     }
 
-    public void setIntitule(String intitule) {
-        this.intitule = intitule;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Collection<Template> getListTemplates() {

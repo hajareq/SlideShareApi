@@ -50,6 +50,6 @@ public class TemplateService implements TemplateMetier {
 
     @Override
     public List<Template> findByCategorie(Categorie categorie) {
-        return templateRepository.findByListCategories_Intitule(categorie.getIntitule());
+        return templateRepository.findByListCategories_Intitule(categorie.getName());
     }
 }
