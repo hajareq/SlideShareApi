@@ -16,6 +16,9 @@ import sun.rmi.runtime.Log;
 
 import java.util.Optional;
 
+import static com.templates.springproject.responses.OperationsResponses.sendError;
+import static com.templates.springproject.responses.OperationsResponses.sendSuccess;
+
 @RestController
 public class UserController {
 
@@ -29,12 +32,6 @@ public class UserController {
         userService = new UserService(userRepository);
     }
 
-    private String sendError(String message) throws JSONException{
-
-        JSONObject jo = new JSONObject();
-        jo.put("error",message);
-        return jo.toString();
-    }
 
 
     @PostMapping("/noauth/client/add")
@@ -45,10 +42,7 @@ public class UserController {
         }
         System.out.println(c.getPassword());
         userService.addUser(c);
-        JSONObject response = new JSONObject();
-        response.put("statut","200");
-        response.put("message", "user added successfully");
-        return response.toString();
+        return sendSuccess();
     }
 
     @PostMapping("/client/update")
@@ -58,10 +52,7 @@ public class UserController {
             User appUser = userRepository.findUserByUsername(auth.getName()).get();
             c.setIdUser(appUser.getIdUser());
             if (userService.updateUser(c)) {
-                JSONObject response = new JSONObject();
-                response.put("statut", "200");
-                response.put("message", "user updated successfully");
-                return response.toString();
+                return sendSuccess();
             }
         }
         return sendError("cannot execute the update. Please check your new username or email. it can be used by another user");

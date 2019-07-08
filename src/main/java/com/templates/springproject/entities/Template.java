@@ -24,6 +24,8 @@ public class Template implements Serializable {
     @ManyToMany
     private Collection<Categorie> listCategories;
 
+    private String path;
+
     public Template() {
     }
 
@@ -39,6 +41,14 @@ public class Template implements Serializable {
         this.nbrDownloads = nbrDownloads;
         this.listUsers = listUsers;
         this.listCategories=listCategories;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public Long getIdTemplate() {

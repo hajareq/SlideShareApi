@@ -21,6 +21,11 @@ public class Categorie implements Serializable {
     public Categorie() {
     }
 
+    public Categorie(@NotNull Integer idCategorie,@NotNull String name) {
+        this.name = name;
+        this.idCategorie = idCategorie;
+    }
+
     public Categorie(Integer idCategorie, String name, Collection<Template> listTemplates) {
         this.idCategorie = idCategorie;
         this.name = name;

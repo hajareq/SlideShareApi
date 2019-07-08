@@ -1,5 +1,6 @@
 package com.templates.springproject;
 
+import com.templates.springproject.Helper.FileStorageProperties;
 import com.templates.springproject.entities.Client;
 import com.templates.springproject.entities.Role;
 import com.templates.springproject.entities.Template;
@@ -12,12 +13,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import java.util.HashSet;
 
 @SpringBootApplication
+@EnableConfigurationProperties({
+        FileStorageProperties.class
+})
 public class SpringprojectApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
@@ -40,7 +45,6 @@ public class SpringprojectApplication extends SpringBootServletInitializer {
             roleRepository.save(r2);
             userService.addUser(new Client(0l,"medamine","elalaoui","medamine","amine","amine.elalaoui.med@gmail.com",r));
             userService.addUser(new Client(0l,"oufrid","youness","ghost","1234567","youness.oufrid1@gmail.com",r2));
-            templateService.addTemplate(new Template(1l,"Test template",0));
         };
     }
 
