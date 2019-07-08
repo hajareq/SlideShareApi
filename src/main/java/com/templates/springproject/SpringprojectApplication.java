@@ -35,7 +35,11 @@ public class SpringprojectApplication extends SpringBootServletInitializer {
             Role r = new Role();
             r.setName("client");
             roleRepository.save(r);
-            userService.addUser(new Client(1l,"medamine","elalaoui","medamine","amine","amine.elalaoui.med@gmail.com",r));
+            Role r2 = new Role();
+            r2.setName("admin");
+            roleRepository.save(r2);
+            userService.addUser(new Client(0l,"medamine","elalaoui","medamine","amine","amine.elalaoui.med@gmail.com",r));
+            userService.addUser(new Client(0l,"oufrid","youness","ghost","1234567","youness.oufrid1@gmail.com",r2));
             templateService.addTemplate(new Template(1l,"Test template",0));
         };
     }

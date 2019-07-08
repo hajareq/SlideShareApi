@@ -16,5 +16,5 @@ public interface TemplateRepository extends JpaRepository<Template,Long> {
     @Query("select t from Template t where t.nom=:x")
     Optional<Template> findByNom(@Param("x") String nom);
 
-    List<Template> findByListCategories_Intitule(String intitule);
+    List<Template> findByListCategories_Name(String name);
 }
