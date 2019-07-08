@@ -79,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/logout").permitAll()
                 .antMatchers("/client/**").authenticated()
 //                .antMatchers("/client/**").hasRole("client")
-                .antMatchers("/admin/**").hasRole("admin");
+                .antMatchers("/admin/**").hasAuthority("admin");
     }
 
 
