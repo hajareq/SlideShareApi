@@ -45,7 +45,7 @@ public class TemplateController {
 
         String filePath = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
+                .path("/downloadFile?fileName=")
                 .path(StringUtils.cleanPath(file.getOriginalFilename()))
                 .toUriString();
 
