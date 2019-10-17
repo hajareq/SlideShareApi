@@ -33,28 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     UserService userDetailsService;
 
 
-
-
-   /* @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }*/
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-    /*    http
-        .httpBasic()
-                .and()
-                .authorizeRequests()
-                *//*.antMatchers(HttpMethod.GET, "/client/**").hasRole("client")
-                .antMatchers(HttpMethod.POST, "/client/**").hasRole("client")
-                .antMatchers(HttpMethod.POST, "/admin").hasRole("admin")
-                .antMatchers(HttpMethod.GET, "/admin").hasRole("admin")*//*
-                .anyRequest().authenticated()
-                .and()
-                .csrf().disable()
-                .formLogin().disable();*/
 
         http.csrf()
                         .disable()
