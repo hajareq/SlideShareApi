@@ -3,7 +3,7 @@
 
 This project is used to provide a REST API that can be used to control and provide all the services needed for a template management system.
 
-## Tools used :
+## Used tools :
  
  ### `spring-boot-starter-data-rest`
  ### `spring-boot-starter-data-jpa`
